@@ -16,10 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var roundInfo = document.querySelector("#round");
 
     var resetButton = document.querySelector("#reset");
-    resetButton.addEventListener("click", resetScores);
     var renameAButton = document.querySelector("#renamePlayerA");
-    renameAButton.addEventListener("click", renamePlayerA);
     var renameBButton = document.querySelector("#renamePlayerB");
+
+    resetButton.addEventListener("click", resetScores);
+    renameAButton.addEventListener("click", renamePlayerA);
     renameBButton.addEventListener("click", renamePlayerB);
 
     initGame();
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             showScores();
         } else if (emptyFields === 0) {
             setTimeout(function () {
-                alert("it is a tie");
+                alert("It is a tie");
                 initGame();
             }, 100);
         }
