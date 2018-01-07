@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
         playerA: "red",
         playerB: "blue"
     };
-
     var currentPlayer;
+    var emptyFields;
 
     initGame();
     function initGame() {
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             field.addEventListener("click", fieldClickHandler);
         });
         currentPlayer = "playerA";
+        emptyFields = 9;
     }
 
     function fieldClickHandler() {
@@ -21,5 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.add(playerClass);
         currentPlayer = currentPlayer === "playerA" ? "playerB" : "playerA";
         this.removeEventListener("click", fieldClickHandler);
+        emptyFields -= 1;
+        if (emptyFields === 0) {
+            alert("game ended");
+        }
     }
 });
