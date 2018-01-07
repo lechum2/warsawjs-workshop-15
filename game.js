@@ -20,5 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var playerClass = playerClasses[currentPlayer];
         this.classList.add(playerClass);
         currentPlayer = currentPlayer === "playerA" ? "playerB" : "playerA";
+        this.removeEventListener("click", fieldClickHandler);
     }
 });
