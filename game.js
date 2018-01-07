@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPlayer = "playerA";
         emptyFields = 9;
         roundInfo.classList = playerClasses[currentPlayer];
-        roundInfo.textContent = currentPlayer + "'s turn";
+        roundInfo.textContent = `${currentPlayer}'s turn`;
     }
 
     function fieldClickHandler() {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.removeEventListener("click", fieldClickHandler);
         emptyFields -= 1;
         checkWinner();
-        roundInfo.textContent = currentPlayer + "'s turn";
+        roundInfo.textContent = `${currentPlayer}'s turn`;
         roundInfo.classList = playerClasses[currentPlayer];
     }
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showScores() {
         var playerAElement = document.querySelector("#scores > .playerA");
         var playerBElement = document.querySelector("#scores > .playerB");
-        playerAElement.textContent = "playerA: " + playerAscores;
-        playerBElement.textContent = "playerB: " + playerBscores;
+        playerAElement.textContent = `playerA: ${playerAscores}`;
+        playerBElement.textContent = `playerB: ${playerBscores}`;
     }
 });
