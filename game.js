@@ -39,14 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
             fields[2].className + fields[4].className + fields[6].className
         ];
         if (winning.includes("redredred")) {
-            alert("playerA won!");
-            initGame();
+            setTimeout(function () { alert("playerA won!"); initGame(); }, 100);
         } else if (winning.includes("blueblueblue")) {
-            alert("playerB won!");
-            initGame();
+            setTimeout(function () { alert("playerB won!"); initGame(); }, 100);
         } else if (emptyFields === 0) {
-            alert("It is a tie");
-            initGame();
+            setTimeout(function () { alert("it is a tie"); initGame(); }, 100);
         }
     }
 });
