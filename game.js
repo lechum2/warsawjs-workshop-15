@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initGame();
     function initGame() {
+        fields.forEach(field => field.classList = []);
         fields.forEach(field => {
             field.addEventListener("click", fieldClickHandler);
         });
@@ -39,10 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ];
         if (winning.includes("redredred")) {
             alert("playerA won!");
+            initGame();
         } else if (winning.includes("blueblueblue")) {
             alert("playerB won!");
+            initGame();
         } else if (emptyFields === 0) {
             alert("It is a tie");
+            initGame();
         }
     }
 });
