@@ -31,3 +31,7 @@
 .blue {
     background-color: cornflowerblue;
 }
+
+#scores {
+    font-size: 30px;
+}

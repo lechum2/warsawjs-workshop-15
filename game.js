@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
         playerA: "red",
         playerB: "blue"
     };
+    var playerAscores = 0;
+    var playerBscores = 0;
     var currentPlayer;
     var emptyFields;
     var fields = document.querySelectorAll(".board > div");
@@ -44,11 +46,31 @@ document.addEventListener("DOMContentLoaded", function () {
             fields[2].className + fields[4].className + fields[6].className
         ];
         if (winning.includes("redredred")) {
-            setTimeout(function () { alert("playerA won!"); initGame(); }, 100);
+            setTimeout(function () {
+                alert("playerA won!");
+                initGame();
+            }, 100);
+            playerAscores += 1;
+            showScores();
         } else if (winning.includes("blueblueblue")) {
-            setTimeout(function () { alert("playerB won!"); initGame(); }, 100);
+            setTimeout(function () {
+                alert("playerB won!");
+                initGame();
+            }, 100);
+            playerBscores += 1;
+            showScores();
         } else if (emptyFields === 0) {
-            setTimeout(function () { alert("it is a tie"); initGame(); }, 100);
+            setTimeout(function () {
+                alert("it is a tie");
+                initGame();
+            }, 100);
         }
+    }
+
+    function showScores() {
+        var playerAElement = document.querySelector("#scores > .playerA");
+        var playerBElement = document.querySelector("#scores > .playerB");
+        playerAElement.textContent = "playerA: " + playerAscores;
+        playerBElement.textContent = "playerB: " + playerBscores;
     }
 });
