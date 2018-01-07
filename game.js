@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var fields = document.querySelectorAll(".board > div");
     var roundInfo = document.querySelector("#round");
 
+    var resetButton = document.querySelector("#reset");
+    resetButton.addEventListener("click", resetScores);
+
     initGame();
     function initGame() {
         fields.forEach(field => field.classList = []);
@@ -72,5 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
         var playerBElement = document.querySelector("#scores > .playerB");
         playerAElement.textContent = `playerA: ${playerAscores}`;
         playerBElement.textContent = `playerB: ${playerBscores}`;
+    }
+
+    function resetScores() {
+        playerAscores = 0;
+        playerBscores = 0;
+        showScores();
     }
 });
