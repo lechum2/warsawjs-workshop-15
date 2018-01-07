@@ -16,6 +16,14 @@
     border: 1px solid grey;
 }
 
+#round {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
+}
+
 .red {
     background-color: crimson;
 }

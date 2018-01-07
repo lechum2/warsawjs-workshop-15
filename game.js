@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var currentPlayer;
     var emptyFields;
     var fields = document.querySelectorAll(".board > div");
+    var roundInfo = document.querySelector("#round");
 
     initGame();
     function initGame() {
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         currentPlayer = "playerA";
         emptyFields = 9;
+        roundInfo.classList = playerClasses[currentPlayer];
+        roundInfo.textContent = currentPlayer + "'s turn";
     }
 
     function fieldClickHandler() {
@@ -25,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         this.removeEventListener("click", fieldClickHandler);
         emptyFields -= 1;
         checkWinner();
+        roundInfo.textContent = currentPlayer + "'s turn";
+        roundInfo.classList = playerClasses[currentPlayer];
     }
 
     function checkWinner() {
