@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
         playerA: "red",
         playerB: "blue"
     };
+    var playerNames = {
+        playerA: "playerA",
+        playerB: "playerB"
+    };
     var playerAscores = 0;
     var playerBscores = 0;
     var currentPlayer;
@@ -13,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var resetButton = document.querySelector("#reset");
     resetButton.addEventListener("click", resetScores);
+    var renameAButton = document.querySelector("#renamePlayerA");
+    renameAButton.addEventListener("click", renamePlayerA);
+    var renameBButton = document.querySelector("#renamePlayerB");
+    renameBButton.addEventListener("click", renamePlayerB);
 
     initGame();
     function initGame() {
@@ -23,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPlayer = "playerA";
         emptyFields = 9;
         roundInfo.classList = playerClasses[currentPlayer];
-        roundInfo.textContent = `${currentPlayer}'s turn`;
+        roundInfo.textContent = `${playerNames[currentPlayer]}'s turn`;
     }
 
     function fieldClickHandler() {
@@ -33,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.removeEventListener("click", fieldClickHandler);
         emptyFields -= 1;
         checkWinner();
-        roundInfo.textContent = `${currentPlayer}'s turn`;
+        roundInfo.textContent = `${playerNames[currentPlayer]}'s turn`;
         roundInfo.classList = playerClasses[currentPlayer];
     }
 
@@ -50,14 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ];
         if (winning.includes("redredred")) {
             setTimeout(function () {
-                alert("playerA won!");
+                alert(`${playerNames.playerA} won!`);
                 initGame();
             }, 100);
             playerAscores += 1;
             showScores();
         } else if (winning.includes("blueblueblue")) {
             setTimeout(function () {
-                alert("playerB won!");
+                alert(`${playerNames.playerB} won!`);
                 initGame();
             }, 100);
             playerBscores += 1;
@@ -73,13 +81,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function showScores() {
         var playerAElement = document.querySelector("#scores > .playerA");
         var playerBElement = document.querySelector("#scores > .playerB");
-        playerAElement.textContent = `playerA: ${playerAscores}`;
-        playerBElement.textContent = `playerB: ${playerBscores}`;
+        playerAElement.textContent = `${playerNames.playerA}: ${playerAscores}`;
+        playerBElement.textContent = `${playerNames.playerB}: ${playerBscores}`;
     }
 
     function resetScores() {
         playerAscores = 0;
         playerBscores = 0;
         showScores();
+    }
+
+    function renamePlayerA() {
+        playerNames.playerA = prompt(`Please add new name for ${playerNames.playerA}`, playerNames.playerA);
+        showScores();
+        roundInfo.textContent = `${playerNames[currentPlayer]}'s turn`;
+        renameAButton.textContent = `Rename ${playerNames.playerA}`;
+    }
+
+    function renamePlayerB() {
+        playerNames.playerB = prompt(`Please add new name for ${playerNames.playerB}`, playerNames.playerB);
+        showScores();
+        roundInfo.textContent = `${playerNames[currentPlayer]}'s turn`;
+        renameBButton.textContent = `Rename ${playerNames.playerB}`;
     }
 });
